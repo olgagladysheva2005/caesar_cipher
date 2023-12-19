@@ -1,0 +1,19 @@
+start = print('Шифр Цезаря \nЧтобы зашифровать текст введите положительное значение сдвига \n'
+              'Чтобы расшифровать текст введите отрицательное значение сдвига' )
+vvod = input('Введи текст: \n')
+sdvig = int(input('Введите сдвиг: '))%32
+not_code = ' ,;:-!?\."()[]{}<>'
+vvod=vvod.replace('ё', 'е')
+vvod=vvod.replace('Ё', 'Е')
+for simvol in vvod:
+    if simvol not in not_code:
+        if (((1040<= ord(simvol)<= 1071) and (ord(simvol) + sdvig > 1071))
+                or ((1072<=ord(simvol) <=1103) and (ord(simvol)+sdvig>1103))):
+            shag = sdvig-32
+        elif (((1040<= ord(simvol)<= 1071) and (ord(simvol) + sdvig <1040))
+                or ((1072<=ord(simvol) <=1103) and (ord(simvol)+sdvig<1072))):
+            shag = sdvig+32
+        else:
+            shag=sdvig
+        print(chr(ord(simvol)+ shag), end='')
+    else:print(simvol, end='')
